@@ -11,9 +11,8 @@ export default function LoginPage() {
           <p className="mt-4 leading-8">Entre para acessar mapa inteligente, achados e perdidos e Professor Radar em um painel azul e branco.</p>
           <div className="mt-8 grid gap-3">
             <div className="rounded-3xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-              <p className="flex items-center gap-2 font-black text-white"><Sparkles size={18}/> Dados de teste</p>
-              <p className="mt-2 text-sm">admin@campus.com, professor@campus.com ou aluno@campus.com</p>
-              <p className="mt-1 text-sm">Senha: 123456</p>
+              <p className="flex items-center gap-2 font-black text-white"><Sparkles size={18}/>Sua experiência no campus começa aqui.</p>
+              <p className="mt-2 text-sm">Acesse sua conta e continue sua jornada no CampusFICR 360.</p>
             </div>
           </div>
         </section>
