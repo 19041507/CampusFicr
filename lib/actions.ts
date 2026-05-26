@@ -7,11 +7,12 @@ import { ClassPace, ItemStatus, Role } from "@prisma/client";
 import { prisma } from "./prisma";
 import { asInt, required, safeUrl } from "./validations";
 import { clearSession, requireUser, setSession } from "./auth";
+import { ensureDatabaseReady } from "./setup-db";
 
 export type ActionState = { error?: string; success?: string };
 
 const databaseErrorMessage =
-  "Não foi possível acessar o banco de dados. Confira a DATABASE_URL na Vercel e rode npx prisma db push no banco Neon.";
+  "Não foi possível acessar o banco de dados. Confira se a DATABASE_URL da Vercel é a URL PostgreSQL do Neon e depois faça Redeploy sem cache.";
 
 function isValidRole(value: string): value is Role {
   return value === "STUDENT" || value === "TEACHER" || value === "ADMIN";
@@ -29,6 +30,7 @@ export async function registerUser(_prevState: ActionState, formData: FormData):
   if (password.length < 6) return { error: "A senha precisa ter pelo menos 6 caracteres." };
 
   try {
+    await ensureDatabaseReady();
     const exists = await prisma.user.findUnique({ where: { email } });
     if (exists) return { error: "Este e-mail já está cadastrado." };
 
@@ -51,6 +53,7 @@ export async function loginUser(_prevState: ActionState, formData: FormData): Pr
   if (!email || !password) return { error: "Informe e-mail e senha." };
 
   try {
+    await ensureDatabaseReady();
     const user = await prisma.user.findUnique({ where: { email } });
     if (!user || !(await bcrypt.compare(password, user.passwordHash))) return { error: "E-mail ou senha inválidos." };
 
@@ -76,6 +79,7 @@ export async function createLocation(_prevState: ActionState, formData: FormData
   if (!name || !type || !description) return { error: "Preencha nome, tipo e descrição." };
 
   try {
+    await ensureDatabaseReady();
     const location = await prisma.campusLocation.create({
       data: {
         name,
@@ -105,6 +109,7 @@ export async function createLostFoundItem(status: ItemStatus, _prevState: Action
   if (!title || !description || !category || !location || !contact) return { error: "Preencha todos os campos obrigatórios." };
 
   try {
+    await ensureDatabaseReady();
     await prisma.lostFoundItem.create({
       data: { title, description, category, location, contact, status, imageUrl: safeUrl(formData.get("imageUrl")), userId: user.id }
     });
@@ -125,6 +130,7 @@ export async function markReturned(formData: FormData) {
   if (!id) return;
 
   try {
+    await ensureDatabaseReady();
     await prisma.lostFoundItem.update({ where: { id }, data: { status: "RETURNED" } });
     revalidatePath("/admin");
     revalidatePath("/achados-perdidos");
@@ -141,6 +147,7 @@ export async function createFeedback(_prevState: ActionState, formData: FormData
   if (!teacherId || !className || !subject) return { error: "Professor, aula e assunto são obrigatórios." };
 
   try {
+    await ensureDatabaseReady();
     await prisma.classFeedback.create({
       data: {
         teacherId,
