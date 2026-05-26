@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { BookOpen, MapPinned, QrCode, Radar, SearchCheck } from "lucide-react";
 import { ButtonLink } from "@/components/Button";
 import { Card } from "@/components/Card";

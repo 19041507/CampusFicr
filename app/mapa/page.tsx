@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { MapPinned } from "lucide-react";
 import { Card } from "@/components/Card";
 import { LocationCard } from "@/components/LocationCard";

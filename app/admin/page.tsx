@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Building2, ClipboardList, MessageSquare, SearchCheck, Users } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { Button } from "@/components/Button";

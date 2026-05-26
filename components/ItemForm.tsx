@@ -3,7 +3,7 @@ import { useFormState } from "react-dom";
 import type { ItemStatus } from "@prisma/client";
 import { createLostFoundItem } from "@/lib/actions";
 import { SubmitButton } from "./SubmitButton";
-const initial = { error: "", success: "" };
+const initial: { error?: string; success?: string } = {};
 export function ItemForm({ status }: { status: ItemStatus }) {
   const [state, action] = useFormState(createLostFoundItem.bind(null, status), initial);
   const isLost = status === "LOST";

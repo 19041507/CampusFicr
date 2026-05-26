@@ -36,7 +36,12 @@ export function readSession(): SessionPayload | null {
 export async function getCurrentUser() {
   const session = readSession();
   if (!session) return null;
-  return prisma.user.findUnique({ where: { id: session.id }, select: { id: true, name: true, email: true, role: true, course: true, createdAt: true } });
+  try {
+    return await prisma.user.findUnique({ where: { id: session.id }, select: { id: true, name: true, email: true, role: true, course: true, createdAt: true } });
+  } catch (error) {
+    console.error("getCurrentUser error", error);
+    return null;
+  }
 }
 
 export async function requireUser(roles?: Role[]) {

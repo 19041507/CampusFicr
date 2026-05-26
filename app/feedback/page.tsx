@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Radar } from "lucide-react";
 import { Card } from "@/components/Card";
 import { FeedbackForm } from "@/components/FeedbackForm";

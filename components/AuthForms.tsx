@@ -4,7 +4,7 @@ import Link from "next/link";
 import { loginUser, registerUser } from "@/lib/actions";
 import { SubmitButton } from "./SubmitButton";
 
-const initial = { error: "", success: "" };
+const initial: { error?: string; success?: string } = {};
 
 export function LoginForm() {
   const [state, action] = useFormState(loginUser, initial);

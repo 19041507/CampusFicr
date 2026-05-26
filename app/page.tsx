@@ -15,7 +15,7 @@ export default function Home() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.1fr_.9fr]">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-bold backdrop-blur"><ShieldCheck size={16}/> Projeto acadêmico pronto para Vercel</span>
-          <h1 className="mt-6 max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">Campus Fácil 360: a faculdade mais simples de navegar, encontrar e melhorar.</h1>
+          <h1 className="mt-6 max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">CampusFICR 360: a faculdade mais simples de navegar, encontrar e melhorar.</h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-blue-50">Uma plataforma web que integra mapa com QR Code, achados e perdidos e feedback anônimo das aulas em um dashboard moderno.</p>
           <div className="mt-8 flex flex-wrap gap-3"><ButtonLink href="/login" variant="secondary">Entrar agora <ArrowRight size={17}/></ButtonLink><ButtonLink href="/cadastro" className="bg-slate-950 hover:bg-slate-800">Criar conta</ButtonLink></div>
         </div>

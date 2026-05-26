@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import { ArrowLeft, Building2, QrCode } from "lucide-react";
 import Link from "next/link";

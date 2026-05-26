@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { MessageSquareText, Percent, Star, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/Badge";
 import { Card } from "@/components/Card";
