@@ -9,18 +9,18 @@ async function main() {
   const aluno = await prisma.user.upsert({ where: { email: "aluno@campus.com" }, update: {}, create: { name: "Aluno Teste", email: "aluno@campus.com", passwordHash, role: "STUDENT", course: "Sistemas de Informação" } });
 
   const locations = [
-    ["Biblioteca", "Estudo", "Espaço para leitura, empréstimo de livros e computadores de pesquisa.", "A", "1"],
-    ["Secretaria", "Serviço", "Atendimento de documentos, matrícula e informações acadêmicas.", "A", "Térreo"],
-    ["Coordenação", "Serviço", "Sala da coordenação dos cursos e suporte aos alunos.", "A", "2"],
-    ["Laboratório de Informática 1", "Laboratório", "Laboratório para aulas práticas de programação.", "B", "1"],
-    ["Laboratório de Informática 2", "Laboratório", "Laboratório para projetos e atividades em grupo.", "B", "2"],
-    ["Sala 101", "Sala", "Sala de aula próxima à entrada principal.", "A", "1"],
-    ["Sala 204", "Sala", "Sala de aula no segundo andar.", "A", "2"],
-    ["Cantina", "Alimentação", "Área de alimentação e convivência dos alunos.", "B", "Térreo"],
-    ["Auditório", "Evento", "Local para palestras, apresentações e eventos acadêmicos.", "B", "Térreo"],
-    ["Banheiro térreo", "Serviço", "Banheiro próximo à recepção.", "A", "Térreo"],
-    ["Bloco A", "Bloco", "Prédio principal com secretaria, salas e biblioteca.", "A", "Todos"],
-    ["Bloco B", "Bloco", "Prédio dos laboratórios, auditório e cantina.", "B", "Todos"]
+    ["Biblioteca", "Estudo", "Espaço para leitura, empréstimo de livros e computadores de pesquisa.", "A", null],
+    ["Secretaria", "Serviço", "Atendimento de documentos, matrícula e informações acadêmicas.", "A", null],
+    ["Coordenação", "Serviço", "Sala da coordenação dos cursos e suporte aos alunos.", "A", null],
+    ["Laboratório de Informática 1", "Laboratório", "Laboratório para aulas práticas de programação.", "B", null],
+    ["Laboratório de Informática 2", "Laboratório", "Laboratório para projetos e atividades em grupo.", "B", null],
+    ["Sala 101", "Sala", "Sala de aula próxima à entrada principal.", "A", null],
+    ["Sala 204", "Sala", "Sala de aula no campus.", "A", null],
+    ["Cantina", "Alimentação", "Área de alimentação e convivência dos alunos.", "B", null],
+    ["Auditório", "Evento", "Local para palestras, apresentações e eventos acadêmicos.", "B", null],
+    ["Banheiro principal", "Serviço", "Banheiro próximo à recepção no campus.", "A", null],
+    ["Bloco A", "Bloco", "Prédio principal com secretaria, salas e biblioteca.", "A", null],
+    ["Bloco B", "Bloco", "Prédio dos laboratórios, auditório e cantina.", "B", null]
   ];
   for (const [name, type, description, block, floor] of locations) {
     const loc = await prisma.campusLocation.upsert({ where: { id: `seed-${name.toLowerCase().replace(/\s+/g, "-")}` }, update: {}, create: { id: `seed-${name.toLowerCase().replace(/\s+/g, "-")}`, name, type, description, block, floor } });

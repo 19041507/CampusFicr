@@ -102,18 +102,18 @@ export async function ensureDatabaseReady() {
 
       const locations = await prisma.campusLocation.createMany({
         data: [
-          { name: "Biblioteca", type: "Estudo", description: "Espaço para leitura, pesquisa e trabalhos em grupo.", block: "A", floor: "1º andar", qrCode: "/mapa/biblioteca" },
-          { name: "Secretaria", type: "Atendimento", description: "Atendimento acadêmico, declarações e documentos.", block: "A", floor: "Térreo", qrCode: "/mapa/secretaria" },
-          { name: "Coordenação", type: "Acadêmico", description: "Coordenação dos cursos e atendimento aos alunos.", block: "B", floor: "2º andar", qrCode: "/mapa/coordenacao" },
-          { name: "Laboratório de Informática 1", type: "Laboratório", description: "Laboratório para aulas práticas e projetos.", block: "B", floor: "1º andar", qrCode: "/mapa/lab-1" },
-          { name: "Laboratório de Informática 2", type: "Laboratório", description: "Ambiente para programação e atividades digitais.", block: "B", floor: "2º andar", qrCode: "/mapa/lab-2" },
-          { name: "Sala 101", type: "Sala", description: "Sala de aula do primeiro andar.", block: "A", floor: "1º andar", qrCode: "/mapa/sala-101" },
-          { name: "Sala 204", type: "Sala", description: "Sala de aula do segundo andar.", block: "A", floor: "2º andar", qrCode: "/mapa/sala-204" },
-          { name: "Cantina", type: "Serviço", description: "Área de alimentação e convivência.", block: "C", floor: "Térreo", qrCode: "/mapa/cantina" },
-          { name: "Auditório", type: "Evento", description: "Local para palestras, eventos e apresentações.", block: "C", floor: "Térreo", qrCode: "/mapa/auditorio" },
-          { name: "Banheiro térreo", type: "Serviço", description: "Banheiros próximos à entrada principal.", block: "A", floor: "Térreo", qrCode: "/mapa/banheiro-terreo" },
-          { name: "Bloco A", type: "Bloco", description: "Entrada principal, secretaria e salas.", block: "A", floor: "Todos", qrCode: "/mapa/bloco-a" },
-          { name: "Bloco B", type: "Bloco", description: "Laboratórios e coordenação.", block: "B", floor: "Todos", qrCode: "/mapa/bloco-b" }
+          { name: "Biblioteca", type: "Estudo", description: "Espaço para leitura, pesquisa e trabalhos em grupo.", block: "A", floor: null, qrCode: "/mapa/biblioteca" },
+          { name: "Secretaria", type: "Atendimento", description: "Atendimento acadêmico, declarações e documentos.", block: "A", floor: null, qrCode: "/mapa/secretaria" },
+          { name: "Coordenação", type: "Acadêmico", description: "Coordenação dos cursos e atendimento aos alunos.", block: "B", floor: null, qrCode: "/mapa/coordenacao" },
+          { name: "Laboratório de Informática 1", type: "Laboratório", description: "Laboratório para aulas práticas e projetos.", block: "B", floor: null, qrCode: "/mapa/lab-1" },
+          { name: "Laboratório de Informática 2", type: "Laboratório", description: "Ambiente para programação e atividades digitais.", block: "B", floor: null, qrCode: "/mapa/lab-2" },
+          { name: "Sala 101", type: "Sala", description: "Sala de aula no campus.", block: "A", floor: null, qrCode: "/mapa/sala-101" },
+          { name: "Sala 204", type: "Sala", description: "Sala de aula no campus.", block: "A", floor: null, qrCode: "/mapa/sala-204" },
+          { name: "Cantina", type: "Serviço", description: "Área de alimentação e convivência.", block: "C", floor: null, qrCode: "/mapa/cantina" },
+          { name: "Auditório", type: "Evento", description: "Local para palestras, eventos e apresentações.", block: "C", floor: null, qrCode: "/mapa/auditorio" },
+          { name: "Banheiro principal", type: "Serviço", description: "Banheiros próximos à entrada principal.", block: "A", floor: null, qrCode: "/mapa/banheiro-principal" },
+          { name: "Bloco A", type: "Bloco", description: "Entrada principal, secretaria e salas.", block: "A", floor: null, qrCode: "/mapa/bloco-a" },
+          { name: "Bloco B", type: "Bloco", description: "Laboratórios e coordenação.", block: "B", floor: null, qrCode: "/mapa/bloco-b" }
         ]
       });
 

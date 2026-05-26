@@ -3,7 +3,7 @@ import { ButtonLink } from "@/components/Button";
 import { Card } from "@/components/Card";
 
 const features = [
-  { title: "Mapa inteligente", icon: MapPinned, text: "Localize biblioteca, secretaria, laboratórios e salas por busca, bloco, andar e QR Code." },
+  { title: "Mapa inteligente", icon: MapPinned, text: "Localize biblioteca, secretaria, laboratórios e salas por busca, bloco/setor e QR Code." },
   { title: "Achados e perdidos", icon: SearchCheck, text: "Cadastre objetos perdidos ou encontrados com status, contato e filtros rápidos." },
   { title: "Professor Radar", icon: Radar, text: "Feedback anônimo com métricas úteis para melhorar ritmo, clareza e exemplos das aulas." }
 ];
