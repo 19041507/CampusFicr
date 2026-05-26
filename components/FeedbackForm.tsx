@@ -3,8 +3,21 @@ import { useFormState } from "react-dom";
 import type { User } from "@prisma/client";
 import { createFeedback } from "@/lib/actions";
 import { SubmitButton } from "./SubmitButton";
+
 const initial: { error?: string; success?: string } = {};
+
 export function FeedbackForm({ teachers }: { teachers: Pick<User, "id" | "name">[] }) {
   const [state, action] = useFormState(createFeedback, initial);
-  return <form action={action} className="space-y-4"><div><label className="label">Professor</label><select className="input" name="teacherId" required><option value="">Selecione</option>{teachers.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}</select></div><div className="grid gap-4 md:grid-cols-2"><div><label className="label">Nome da aula ou disciplina</label><input className="input" name="className" required /></div><div><label className="label">Assunto da aula</label><input className="input" name="subject" required /></div></div><div className="grid gap-4 md:grid-cols-2"><div><label className="label">Entendi o conteúdo? 1 a 5</label><input className="input" name="contentUnderstood" type="number" min="1" max="5" defaultValue="4" /></div><div><label className="label">Clareza da aula 1 a 5</label><input className="input" name="clarity" type="number" min="1" max="5" defaultValue="4" /></div></div><div className="grid gap-4 md:grid-cols-2"><div><label className="label">Ritmo da aula</label><select className="input" name="classPace" defaultValue="GOOD"><option value="SLOW">Lento</option><option value="GOOD">Bom</option><option value="FAST">Rápido</option></select></div><div><label className="label">Preciso de mais exemplos?</label><select className="input" name="needMoreExamples" defaultValue="false"><option value="false">Não</option><option value="true">Sim</option></select></div></div><div><label className="label">Qual tópico ficou confuso?</label><input className="input" name="confusingTopic" /></div><div><label className="label">Comentário opcional</label><textarea className="input min-h-28" name="comment" /></div>{state?.error && <p className="rounded-2xl bg-red-50 p-3 text-sm font-semibold text-red-700">{state.error}</p>}{state?.success && <p className="rounded-2xl bg-emerald-50 p-3 text-sm font-semibold text-emerald-700">{state.success}</p>}<SubmitButton>Enviar feedback anônimo</SubmitButton></form>;
+  return (
+    <form action={action} className="space-y-5">
+      <div><label className="label">Professor</label><select className="input" name="teacherId" required><option value="">Selecione o professor</option>{teachers.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}</select></div>
+      <div className="grid gap-4 md:grid-cols-2"><div><label className="label">Nome da aula ou disciplina</label><input className="input" name="className" placeholder="Ex.: Programação Web" required /></div><div><label className="label">Assunto da aula</label><input className="input" name="subject" placeholder="Ex.: Rotas no Next.js" required /></div></div>
+      <div className="grid gap-4 md:grid-cols-2"><div><label className="label">Entendi o conteúdo? 1 a 5</label><input className="input" name="contentUnderstood" type="number" min="1" max="5" defaultValue="4" /></div><div><label className="label">Clareza da aula 1 a 5</label><input className="input" name="clarity" type="number" min="1" max="5" defaultValue="4" /></div></div>
+      <div className="grid gap-4 md:grid-cols-2"><div><label className="label">Ritmo da aula</label><select className="input" name="classPace" defaultValue="GOOD"><option value="SLOW">Lento</option><option value="GOOD">Bom</option><option value="FAST">Rápido</option></select></div><div><label className="label">Preciso de mais exemplos?</label><select className="input" name="needMoreExamples" defaultValue="false"><option value="false">Não</option><option value="true">Sim</option></select></div></div>
+      <div><label className="label">Qual tópico ficou confuso?</label><input className="input" name="confusingTopic" placeholder="Opcional" /></div>
+      <div><label className="label">Comentário opcional</label><textarea className="input min-h-28" name="comment" placeholder="Escreva uma sugestão para melhorar a aula." /></div>
+      {state?.error && <p className="rounded-2xl bg-red-50 p-3 text-sm font-black text-red-700">{state.error}</p>}{state?.success && <p className="rounded-2xl bg-blue-50 p-3 text-sm font-black text-blue-700">{state.success}</p>}
+      <SubmitButton className="w-full md:w-auto">Enviar feedback anônimo</SubmitButton>
+    </form>
+  );
 }
