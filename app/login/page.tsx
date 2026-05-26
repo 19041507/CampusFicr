@@ -1,0 +1,4 @@
+import { LoginForm } from "@/components/AuthForms";
+import { Card } from "@/components/Card";
+import { GraduationCap } from "lucide-react";
+export default function LoginPage() { return <main className="grid min-h-[calc(100vh-73px)] place-items-center px-4 py-12"><Card className="w-full max-w-md"><div className="mb-6 text-center"><span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-blue-600 text-white"><GraduationCap /></span><h1 className="mt-4 text-3xl font-black">Entrar no Campus Fácil</h1><p className="mt-2 text-sm text-slate-500">Use uma conta de aluno, professor ou admin.</p></div><LoginForm /><div className="mt-5 rounded-2xl bg-slate-50 p-4 text-xs text-slate-600"><b>Teste:</b> admin@campus.com / professor@campus.com / aluno@campus.com — senha 123456</div></Card></main>; }

@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+enum ItemStatus {
+  LOST
+  FOUND
+  RETURNED
+}
+
+enum ClassPace {
+  SLOW
+  GOOD
+  FAST
+}
+
+model User {
+  id           String          @id @default(cuid())
+  name         String
+  email        String          @unique
+  passwordHash String
+  role         Role            @default(STUDENT)
+  course       String?
+  createdAt    DateTime        @default(now())
+  items        LostFoundItem[]
+  feedbacks    ClassFeedback[] @relation("TeacherFeedback")
+}
+
+model CampusLocation {
+  id          String   @id @default(cuid())
+  name        String
+  type        String
+  description String
+  floor       String?
+  block       String?
+  qrCode      String?
+  createdAt   DateTime @default(now())
+}
+
+model LostFoundItem {
+  id          String     @id @default(cuid())
+  title       String
+  description String
+  category    String
+  status      ItemStatus
+  location    String
+  contact     String
+  imageUrl    String?
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+}
+
+model ClassFeedback {
+  id                String    @id @default(cuid())
+  teacherId         String
+  teacher           User      @relation("TeacherFeedback", fields: [teacherId], references: [id], onDelete: Cascade)
+  className         String
+  subject           String
+  contentUnderstood Int
+  classPace         ClassPace
+  needMoreExamples  Boolean
+  clarity           Int
+  confusingTopic    String?
+  comment           String?
+  createdAt         DateTime  @default(now())
+}
