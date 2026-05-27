@@ -17,10 +17,10 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50/95 to-transparent" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_.95fr]">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-4 py-2 text-sm font-black backdrop-blur"><ShieldCheck size={16}/> Plataforma acadêmica azul e branco</span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/15 px-4 py-2 text-sm font-black backdrop-blur"><ShieldCheck size={16}/> Plataforma Acadêmica</span>
             <h1 className="mt-6 max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">CampusFICR 360</h1>
             <p className="mt-4 max-w-2xl text-2xl font-black text-blue-50">Um campus mais fácil de navegar, recuperar objetos e melhorar aulas.</p>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50/90">Dashboard profissional para alunos, professores e administração, com navegação simples e pronto para rodar na Vercel.</p>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50/90">Dashboard profissional para alunos, professores e administração, com navegação simples e pronto.</p>
             <div className="mt-8 flex flex-wrap gap-3"><ButtonLink href="/login" variant="secondary">Entrar no sistema <ArrowRight size={17}/></ButtonLink><ButtonLink href="/cadastro" className="bg-blue-950 hover:bg-blue-900">Criar conta</ButtonLink></div>
           </div>
           <Card className="border-white/20 bg-white/95 p-4 text-slate-900">
